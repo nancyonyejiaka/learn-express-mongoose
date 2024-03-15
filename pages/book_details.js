@@ -28,5 +28,5 @@ exports.show_book_dtls = async (res, id) => {
   }
   catch(err) {
     res.send(`Book ${id} not found`);
-  } 
+  }
 }
