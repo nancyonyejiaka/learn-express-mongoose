@@ -25,17 +25,14 @@ AuthorSchema.virtual("name").get(function () {
 
 // Virtual for author's lifespan
 AuthorSchema.virtual("lifespan").get(function () {
-  const birthYear = this.date_of_birth.getFullYear();
-  let deathYear = this.date_of_death.getFullYear();
+  let birthYear = this.date_of_birth ? this.date_of_birth.getFullYear() : "Unknown";
+  let deathYear = this.date_of_death ? this.date_of_death.getFullYear() : "";
 
-  if (!birthYear) {
-    return "Unknown";
-  }
-  if (!deathYear) {
-    deathYear = ""
+  if (birthYear === "Unknown") {
+    return birthYear;
   }
 
-  return `${birthYear} - ${deathYear}`
+  return `${birthYear} - ${deathYear}`;
 });
 
 //Export model
